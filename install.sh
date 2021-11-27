@@ -15,14 +15,14 @@ restore_form_dump_file()
 
 create_venv(){
     echo create venv
-    python3 -m venv /opt/lispio/mr/mr_venv
+    python3 -m venv /opt/lispio/mr/mrSvr_venv
     echo done
 }
 
 install_py_package()
 {
   echo insall requirements package
-  source /opt/lispio/mr/mr_venv/bin/activate
+  source /opt/lispio/mr/mrSvr_venv/bin/activate
   pip install wheel
   pip install -r /opt/lispio/mr/requirements.txt
   deactivate
@@ -31,13 +31,13 @@ install_py_package()
 
 do_migrations () {
   echo enter venv
-  source /opt/lispio/mr/mr_venv/bin/activate
+  source /opt/lispio/mr/mrSvr_venv/bin/activate
   echo runing migrations
   python3 utility/apply.py
   deactivate
   echo migratios done
 }
 
-# create_venv
-# install_py_package
+create_venv
+install_py_package
 #create_db
