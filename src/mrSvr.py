@@ -5,12 +5,19 @@ import logging
 
 from twisted.web import resource
 
-log = logging.getLogger()
+log = logging.getLogger('mrSvr')
 
 
-class Simple(resource.Resource):
+class MrSvrEndpoints(resource.Resource):
     isLeaf = True
 
     def render_GET(self, request):
-        log.info("first endpoint")
-        return b"Manny's recipes version 0.0.0-1"
+        if request.uri == b'/id':
+            response = b"0.0.0-1"
+            log.debug(f"endpoint: {request.uri} - Response: {response}")
+            return response
+        else:
+            response = b"Manny's recipes version 0.0.0-1"
+            log.debug(f"unknown endpoint: {request.uri} - Response: {response}")
+            return response
+
