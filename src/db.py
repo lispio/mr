@@ -11,11 +11,13 @@ def connect_db():
     conn.autocommit = True
     cursor = conn.cursor()
     return cursor
-    
+
+
 def run_query(sql):
     conn = connect_db()
     conn.execute(sql)
     return conn.fetchall()
+
 
 def run_update(sql):
     conn = connect_db()
