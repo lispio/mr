@@ -8,7 +8,7 @@ from twisted.web import server, resource
 from twisted.internet import reactor, endpoints
 
 from src.mrSvr import MrSvrEndpoints
-from src.templates import MrSvr
+from src.templates.mrSvrTemplates import MrSvr
 
 log = logging.getLogger('mrSvr')
 log.setLevel(logging.DEBUG)
