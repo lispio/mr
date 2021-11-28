@@ -5,7 +5,8 @@ import logging
 
 from twisted.web import resource
 
-from src.common import get_users, add_user
+from src.common import get_users, add_user, convert_to_json
+
 
 log = logging.getLogger('mrSvr')
 
@@ -17,20 +18,22 @@ class MrSvrEndpoints(resource.Resource):
         if request.uri == b'/id':
             response = b"0.0.0-1"
             log.debug(f"endpoint: {request.uri} - Response: {response}")
-            add_user('T13', '15', 'jakis@email')
             return response
 
         if request.uri == b'/add_user':
-            response = b'user_added'
-            return response
+            if request.content.getvalue():
+                add_user(request.content.getvalue())
+                response = b'user_added'
+                return response
+            else:
+                log.error("No data in request")
+                raise TypeError("No data in request")
 
         if request.uri == b'/test':
-            temp = request.content.getvalue()
-            print(temp)
+            tmp = convert_to_json(request.content.getvalue())
             return b''
 
         else:
             response = b"Manny's recipes version 0.0.0-1"
             log.debug(f"unknown endpoint: {request.uri} - Response: {response}")
             return response
-

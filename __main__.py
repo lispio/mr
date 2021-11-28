@@ -13,7 +13,7 @@ from src.templates.mrSvrTemplates import MrSvr
 log = logging.getLogger('mrSvr')
 log.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(module)s %(funcName)s %(lineno)d: %(message)s')
-logHandler = handlers.TimedRotatingFileHandler('logs/mrSvr.log',  interval=1)
+logHandler = handlers.TimedRotatingFileHandler('logs/mrSvr.log',  interval=1, delay=False, backupCount=0)
 logHandler.setLevel(logging.DEBUG)
 logHandler.setFormatter(formatter)
 log.addHandler(logHandler)
