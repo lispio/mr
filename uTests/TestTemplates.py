@@ -2,8 +2,10 @@ from enum import Enum
 
 
 class CommonTests(Enum):
-    CountUsers = "select count(*) from users"
-    DeleteTestUser = "DELETE FROM users WHERE name LIKE 'TestUser'"
     User = {"name": 'TestUser', "password": 'TestPassword', "email": 'Test@email'}
+
+    CountUsers = "select count(*) from users"
+    CountUserName = "select count(name) from users WHERE name LIKE '%s'" % User["name"]
+    DeleteTestUser = "DELETE FROM users WHERE name LIKE '%s'" % User["name"]
 
 

@@ -9,7 +9,7 @@ log = logging.getLogger('mrSvr')
 
 def get_users():
     results = run_query(DbGet.GetUsers.value)
-    log.debug(f"Results {results}")
+    log.debug(f"Results: {results}")
     return results
 
 
