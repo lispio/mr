@@ -1,3 +1,4 @@
+import json
 from enum import Enum
 
 
@@ -6,6 +7,6 @@ class User(Enum):
 
 
 class Recipes(Enum):
-    AddRecipes = {}
+    AddRecipes = '{"user_id": "None", "recipes_name": "None", "recipes_type": 0, "is_public": None }'
     FindRecipes = {}
     UpdateRecipes = {}

@@ -1,5 +1,5 @@
 steps = [
-    step("CREATE TABLE IF NOT EXISTS d_recipe (id SERIAL PRIMARY KEY, "
+    step("CREATE TABLE IF NOT EXISTS recipes_d (id SERIAL PRIMARY KEY, "
          "recipes_id SMALLINT,"
          "ming_id SMALLINT, "
          "weight SMALLINT, "

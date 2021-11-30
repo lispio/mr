@@ -19,3 +19,6 @@ def validate_user(request, template):
             data.append(request[key])
     return data
 
+
+def validate_recipes(request):
+    print(request)
