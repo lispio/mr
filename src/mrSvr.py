@@ -6,12 +6,14 @@ import logging
 from twisted.web import resource
 
 from src.users import add_user
-from src.recipes import add_recipes
+from src.recipes import Recipes
 
 log = logging.getLogger('mrSvr')
 
 
 class MrSvrEndpoints(resource.Resource):
+    def __init__(self):
+        self.rec = Recipes()
     isLeaf = True
 
     def render_GET(self, request):
@@ -31,7 +33,7 @@ class MrSvrEndpoints(resource.Resource):
 
         if request.uri == b'/add_recipes':
             print(request.content.getvalue())
-            add_recipes(request.content.getvalue())
+            self.rec.add_recipes(request.content.getvalue())
             return b''
 
         if request.uri == b'/find_recipes':
