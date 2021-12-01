@@ -1,6 +1,7 @@
 steps = [
     step("CREATE TABLE IF NOT EXISTS recipes (id SERIAL PRIMARY KEY, "
-         "name VARCHAR (64), user_id SMALLINT, "
+         "name VARCHAR (64) UNIQUE, "
+         "user_id SMALLINT, "
          "recipes_type SMALLINT, "
          "is_public BOOL DEFAULT false, "
          "CONSTRAINT fk_user_id FOREIGN KEY (user_id) "
