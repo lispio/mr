@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 import logging
 import json
-
-from src.ValidateData import validate_recipes
-from src.common import convert_to_json
+from src.db import run_query
+from src.templates.QueryTemplates import qtRecipes
 
 
 class Recipes:
 
-    def add_recipes(self, request):
-        validate_recipes(convert_to_json(request))
+    def get_recipes(self):
+        return run_query(qtRecipes.GetRecipes.value)
+
+    def add_recipes(self):
+        pass
 
     def find_recipes(self):
         pass

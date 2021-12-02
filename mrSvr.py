@@ -3,12 +3,10 @@ import sys
 import time
 import logging
 import logging.handlers as handlers
+import uvicorn
+from fastapi import FastAPI
 
-from twisted.web import server, resource
-from twisted.internet import reactor, endpoints
-
-from src.mrSvr import MrSvrEndpoints
-from src.templates.mrSvrTemplates import MrSvr
+from src.endpoints import app
 
 log = logging.getLogger('mrSvr')
 log.setLevel(logging.DEBUG)
@@ -19,13 +17,7 @@ logHandler.setFormatter(formatter)
 log.addHandler(logHandler)
 
 
-def main():
-    log.info(f"rmSvr start on port: {MrSvr.port.value}")
-    site = server.Site(MrSvrEndpoints())
-    endpoint = endpoints.TCP4ServerEndpoint(reactor, MrSvr.port.value)
-    endpoint.listen(site)
-    reactor.run()
-
-
-if __name__ == '__main__':
-    sys.exit(main())
+if __name__ == "__main__":
+    log.info("server Start")
+    uvicorn.run(app, host="127.0.0.1", port=7979)
+    log.info("server stops")
