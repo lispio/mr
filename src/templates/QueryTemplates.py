@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class qtUsers(Enum):
-    insertUsers = "INSERT INTO users (name, password, email) VALUES ('%s', '%s', '%s')"
+    addUsers = "INSERT INTO users (name, password, email) VALUES ('%s', '%s', '%s')"
     getUsers = "SELECT * FROM users"
 
 

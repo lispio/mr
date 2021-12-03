@@ -1,12 +1,12 @@
 #!/opt/lispio/mr/mrSvr_venv/bin/python
 # -*- coding: utf-8 -*-
-
+import json
 import logging
 from fastapi import FastAPI
-from src.users import get_users
+from src.users import getUsers
 from src.recipes import Recipes as rec
 from src.templates.EndpoitnsTemplates import Item, AddUser, AddRecipes
-
+from src.users import addUser
 
 log = logging.getLogger('mrSvr')
 
@@ -21,13 +21,12 @@ async def root():
 
 @app.get("/recipes")
 async def get_recipes():
-    r = rec()
-    return r.get_recipes()
+    return rec().get_recipes()
 
 
 @app.get("/get_users")
 async def get_user_id():
-    return get_users()
+    return getUsers()
 
 
 @app.get("/find_recipes")
@@ -36,8 +35,8 @@ async def find_recipes():
 
 
 @app.post("/add_user")
-async def add_user(item: AddUser):
-    print(item)
+async def add_users(item: AddUser):
+    return addUser(item)
 
 
 @app.post("/add_recipes")

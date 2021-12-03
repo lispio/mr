@@ -132,3 +132,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/uTests/_trial_temp/_trial_marker
+/.idea/modules.xml
+/.idea/misc.xml
+/.idea/mr.iml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
