@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import logging
-import json
 from src.db import run_query
 from src.templates.QueryTemplates import qtRecipes
+
+log = logging.getLogger('mrSvr')
 
 
 class Recipes:

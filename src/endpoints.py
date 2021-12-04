@@ -4,14 +4,18 @@ import json
 import logging
 from fastapi import FastAPI
 from src.users import getUsers
-from src.recipes import Recipes as rec
+from src.recipes import Recipes
 from src.templates.EndpoitnsTemplates import Item, AddUser, AddRecipes
 from src.users import addUser
+from src.recipes import Recipes
+
 
 log = logging.getLogger('mrSvr')
 
 
 app = FastAPI()
+
+rec = Recipes()
 
 
 @app.get("/")
@@ -21,12 +25,20 @@ async def root():
 
 @app.get("/recipes")
 async def get_recipes():
-    return rec().get_recipes()
+    grec = rec.get_recipes()
+    if len(grec) > 0:
+        return grec
+    else:
+        return 'Recipes Not Found'
 
 
-@app.get("/get_users")
-async def get_user_id():
-    return getUsers()
+@app.get("/get_users/")
+async def get_user_id(uname: str):
+    guser = getUsers(uname)
+    if len(guser) == 1:
+        return getUsers(uname)
+    else:
+        return 'User Not Found'
 
 
 @app.get("/find_recipes")
