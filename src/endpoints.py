@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 import json
 import logging
-from fastapi import FastAPI
+from fastapi import FastAPI, status, Response
+
 from src.users import getUsers
-from src.recipes import Recipes
-from src.templates.EndpoitnsTemplates import Item, AddUser, AddRecipes
+from src.templates.Templates_GET import UserOut, UserOut, UserIn
+from src.templates.Templates_POST import AddUser, AddRecipes
 from src.users import addUser
 from src.recipes import Recipes
 
@@ -24,21 +25,21 @@ async def root():
 
 
 @app.get("/recipes")
-async def get_recipes():
+async def get_recipes(response: Response):
     grec = rec.get_recipes()
     if len(grec) > 0:
         return grec
     else:
-        return 'Recipes Not Found'
+        response.status_code = status.HTTP_404_NOT_FOUND
 
 
-@app.get("/get_users/")
-async def get_user_id(uname: str):
-    guser = getUsers(uname)
-    if len(guser) == 1:
-        return getUsers(uname)
+@app.get("/get_users/", response_model=UserOut, response_model_exclude_unset=True, status_code=200)
+async def get_user_id(username: str, response: Response):
+    guser = getUsers(username)
+    if guser:
+        return guser[username]
     else:
-        return 'User Not Found'
+        response.status_code = status.HTTP_404_NOT_FOUND
 
 
 @app.get("/find_recipes")

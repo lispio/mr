@@ -15,7 +15,7 @@ class TRecipes(Enum):
 
 
 class ResponseGet(Enum):
-    UserExist = [[1000, 'TestUser', 'TestPassword', 'Test@email']]
+    UserExist = {'user_id': 1000, 'username': 'TestUser', 'email': 'Test@email'}
     UserNotExist = 'User Not Found'
     RecipesExist = [[1000, 'TestRecipes', 1000, 1, False]]
     RecipesNotExist = 'Recipes Not Found'

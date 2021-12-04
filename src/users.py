@@ -12,7 +12,13 @@ def addUser(item):
     return "user added"
 
 
-def getUsers(uname):
-    results = run_query(qtUsers.getUsers.value % uname)
-    log.debug(f"Results: {results}")
-    return results
+def getUsers(username):
+    # [(16, 'TU_0', 'TuPass_0', 'TU0@test.com')]
+    results = run_query(qtUsers.getUsers.value % username)
+    if len(results) > 0:
+        log.debug(f"Results: {results}")
+        items = {
+            username: {"user_id": results[0][0], "username": f"{results[0][1]}", "email": f'{results[0][3]}'},
+        }
+
+        return items

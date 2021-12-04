@@ -1,14 +1,5 @@
-import json
-from enum import Enum
 from typing import Optional
 from pydantic import BaseModel
-
-
-class Item(BaseModel):
-    name: str
-    description: Optional[str] = None
-    price: float
-    tax: Optional[float] = None
 
 
 class AddUser(BaseModel):
@@ -23,4 +14,3 @@ class AddRecipes(BaseModel):
     recipes_type: int
     descriptions: Optional[str] = None
     is_public: bool
-

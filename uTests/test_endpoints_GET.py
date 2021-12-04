@@ -22,14 +22,14 @@ class TestGET(TestCase):
         assert response.json() == {"message": "Hello World im Mannis's Recepis"}
 
     def test_getUserExist(self):
-        response = self.client.get("/get_users/?uname=%s" % TUser.uName.value)
+        response = self.client.get("/get_users/?username=%s" % TUser.uName.value)
         assert response.status_code == 200
         assert response.json() == ResponseGet.UserExist.value
 
     def test_getUserNotExist(self):
-        response = self.client.get("/get_users/?uname=TetUs")
-        assert response.status_code == 200
-        assert response.json() == ResponseGet.UserNotExist.value
+        response = self.client.get("/get_users/?username=TetUs")
+        assert response.status_code == 404
+        assert response.json() is None
 
     def test_getRecipesExist(self):
         response = self.client.get("/recipes")
@@ -39,5 +39,5 @@ class TestGET(TestCase):
     def test_getRecipesNotExist(self):
         run_update(RecipesTests.DeleteRecipes.value)
         response = self.client.get("/recipes")
-        assert response.status_code == 200
-        assert response.json() == ResponseGet.RecipesNotExist.value
+        assert response.status_code == 404
+        assert response.json() is None
