@@ -1,11 +1,11 @@
 # Manny's recipes
 
-> Manny's recipes are a project of writing, modifying, analyzing recipes, home-made products such as:    
+> Manny's recipes is a project designed to collect/share, add modifications and analyze recipes for home-made products such as:    
 > -bread  
 > -homemade wine  
-> -Liquor  
+> -liquor  
 > -homemade cheeses  
-> -meats (smoked) 
+> -smoked meats 
 
 
 
