@@ -12,9 +12,7 @@ from src.templates.Templates_POST import AddUser, RecipesInOut
 from src.users import addUser
 from src.recipes import Recipes
 
-
 log = logging.getLogger('mrSvr')
-
 
 app = FastAPI()
 
@@ -36,7 +34,7 @@ async def get_recipes(response: Response):
 
 
 @app.get("/recipes_user")
-async def get_recipes(username: str,  response: Response):
+async def get_recipes(username: str, response: Response):
     grec = rec.get_recipes(username)
     if grec:
         return grec
@@ -65,12 +63,8 @@ async def add_users(response: Response):
 
 @app.post("/add_recipes", response_model=RecipesInOut, response_model_exclude_unset=True, status_code=200)
 async def add_recipes(recipes: RecipesInOut, response: Response):
-    print(recipes)
     results = rec.add_recipes(recipes)
-    if results:
-        return response
-    else:
-        response.status_code = status.HTTP_501_NOT_IMPLEMENTED
+    # TODO prepare correct response
 
 
 @app.post("/update_recipes")
