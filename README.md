@@ -24,7 +24,6 @@
 
 
 ## General Information
-mrUtility is a tool for "Manny's recipes (mr)"
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
@@ -57,6 +56,14 @@ Examples:
 ## Project Status
 ### Very early stage of development  
 Project is: _in progress_
+
+## screenshots
+
+![](../../../home/it/Obrazy/api.png)
+![](../../../home/it/Obrazy/api2.png)
+
+tests coverage ;)  
+![](../../../home/it/Obrazy/cov.png)
 
 ## To Do
 - Endpoints  
