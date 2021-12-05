@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import json
 import logging
+from typing import Optional
+
 from fastapi import FastAPI, status, Response
 
 from src.users import getUsers
@@ -21,12 +23,21 @@ rec = Recipes()
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World im Mannis's Recepis"}
+    return {"message": "Hello World im Mannis's Recipes"}
 
 
 @app.get("/recipes")
 async def get_recipes(response: Response):
     grec = rec.get_recipes()
+    if grec:
+        return grec
+    else:
+        response.status_code = status.HTTP_404_NOT_FOUND
+
+
+@app.get("/recipes_user")
+async def get_recipes(username: str,  response: Response):
+    grec = rec.get_recipes(username)
     if grec:
         return grec
     else:

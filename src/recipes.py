@@ -8,8 +8,11 @@ log = logging.getLogger('mrSvr')
 
 class Recipes:
 
-    def get_recipes(self):
-        return run_query(qtRecipes.GetRecipes.value)
+    def get_recipes(self, userid=None):
+        if userid:
+            return run_query(qtRecipes.getUserRecipes.value % userid)
+
+        return run_query(qtRecipes.getRecipes.value)
 
     def add_recipes(self, recipes):
         log.debug(recipes)
