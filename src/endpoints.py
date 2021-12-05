@@ -6,7 +6,7 @@ from fastapi import FastAPI, status, Response
 
 from src.users import getUsers
 from src.templates.Templates_GET import UserOut, UserIn
-from src.templates.Templates_POST import AddUser, AddRecipes
+from src.templates.Templates_POST import AddUser, RecipesInOut
 from src.users import addUser
 from src.recipes import Recipes
 
@@ -52,9 +52,14 @@ async def add_users(response: Response):
     response.status_code = status.HTTP_501_NOT_IMPLEMENTED
 
 
-@app.post("/add_recipes")
-async def add_recipes(response: Response):
-    response.status_code = status.HTTP_501_NOT_IMPLEMENTED
+@app.post("/add_recipes", response_model=RecipesInOut, response_model_exclude_unset=True, status_code=200)
+async def add_recipes(recipes: RecipesInOut, response: Response):
+    print(recipes)
+    results = rec.add_recipes(recipes)
+    if results:
+        return response
+    else:
+        response.status_code = status.HTTP_501_NOT_IMPLEMENTED
 
 
 @app.post("/update_recipes")

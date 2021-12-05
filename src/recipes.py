@@ -11,8 +11,8 @@ class Recipes:
     def get_recipes(self):
         return run_query(qtRecipes.GetRecipes.value)
 
-    def add_recipes(self):
-        pass
+    def add_recipes(self, recipes):
+        log.debug(recipes)
 
     def find_recipes(self):
         pass

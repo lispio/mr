@@ -8,9 +8,9 @@ class AddUser(BaseModel):
     email: str
 
 
-class AddRecipes(BaseModel):
+class RecipesInOut(BaseModel):
     name: str
     user_id: int
     recipes_type: int
-    is_public: bool
+    is_public: bool = False
     des: Optional[str] = None
