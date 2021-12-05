@@ -59,11 +59,12 @@ Project is: _in progress_
 
 ## screenshots
 
-![](../../../home/it/Obrazy/api.png)
-![](../../../home/it/Obrazy/api2.png)
+![api](https://user-images.githubusercontent.com/46598418/144756738-6134df1b-295e-4c8a-9e13-c766ac30afa9.png)
+![api2](https://user-images.githubusercontent.com/46598418/144756760-03b2cc2a-4c14-4700-a444-121f75453d53.png)
 
 tests coverage ;)  
-![](../../../home/it/Obrazy/cov.png)
+![cov](https://user-images.githubusercontent.com/46598418/144756767-c8aaf04e-e2f3-410d-a154-7f9f90cfb8c9.png)
+
 
 ## To Do
 - Endpoints  
