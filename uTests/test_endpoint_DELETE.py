@@ -13,15 +13,10 @@ class TestPOST(TestCase):
     def tearDown(self):
         run_update(TUQuery.DeleteTestUser.value)
 
-    def test_addUsers(self):
-        response = self.client.post("/add_user")
+    def test_deleteUser(self):
+        response = self.client.delete("/delete_user")
         assert response.status_code == 501
 
-    def test_addRecipes(self):
-        response = self.client.post("/add_recipes")
+    def test_deleteRecipe(self):
+        response = self.client.delete("/delete_recipe")
         assert response.status_code == 501
-
-    def test_updateRecipes(self):
-        response = self.client.post("/update_recipes")
-        assert response.status_code == 501
-

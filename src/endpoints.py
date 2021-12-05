@@ -43,30 +43,30 @@ async def get_user_id(username: str, response: Response):
 
 
 @app.get("/find_recipes")
-async def find_recipes():
-    pass
+async def find_recipes(response: Response):
+    response.status_code = status.HTTP_501_NOT_IMPLEMENTED
 
 
 @app.post("/add_user")
-async def add_users(item: AddUser):
-    return addUser(item)
+async def add_users(response: Response):
+    response.status_code = status.HTTP_501_NOT_IMPLEMENTED
 
 
 @app.post("/add_recipes")
-async def add_recipes(item: AddRecipes):
-    return "recipes added"
+async def add_recipes(response: Response):
+    response.status_code = status.HTTP_501_NOT_IMPLEMENTED
 
 
 @app.post("/update_recipes")
-async def update_recipes():
-    pass
+async def update_recipes(response: Response):
+    response.status_code = status.HTTP_501_NOT_IMPLEMENTED
 
 
 @app.delete("/delete_user")
-async def delete_user():
-    pass
+async def delete_user(response: Response):
+    response.status_code = status.HTTP_501_NOT_IMPLEMENTED
 
 
 @app.delete("/delete_recipe")
-async def delete_recipe():
-    pass
+async def delete_recipe(response: Response):
+    response.status_code = status.HTTP_501_NOT_IMPLEMENTED

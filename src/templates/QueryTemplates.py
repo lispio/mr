@@ -8,4 +8,4 @@ class qtUsers(Enum):
 
 class qtRecipes(Enum):
     addRecipes = ""
-    GetRecipes = "SELECT * FROM recipes"
+    GetRecipes = "SELECT * FROM recipes WHERE is_public = True"
