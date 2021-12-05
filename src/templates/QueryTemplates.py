@@ -8,6 +8,9 @@ class qtUsers(Enum):
 
 class qtRecipes(Enum):
     addRecipes = ""
-    getRecipes = "SELECT * FROM recipes WHERE is_public = True"
+    getRecipes = "select recipes.name, users.name, recipes_type.rt  from recipes JOIN users ON recipes.user_id = " \
+                 "users.id JOIN recipes_type ON recipes.recipes_type = recipes_type.rt_id WHERE recipes.is_public = " \
+                 "True;"
+
     getUserRecipes = "select recipes.name, recipes.recipes_type, recipes.is_public, recipes.des from recipes JOIN " \
-                     "users ON recipes.user_id = users.id WHERE users.id = '%s' "
+                     "users ON recipes.user_id = users.id WHERE users.name = '%s' "

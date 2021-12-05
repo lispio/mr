@@ -8,9 +8,9 @@ log = logging.getLogger('mrSvr')
 
 class Recipes:
 
-    def get_recipes(self, userid=None):
-        if userid:
-            return run_query(qtRecipes.getUserRecipes.value % userid)
+    def get_recipes(self, username=None):
+        if username:
+            return run_query(qtRecipes.getUserRecipes.value % username)
 
         return run_query(qtRecipes.getRecipes.value)
 
