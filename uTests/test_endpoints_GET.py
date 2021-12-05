@@ -34,7 +34,6 @@ class TestGET(TestCase):
     def test_getRecipesExist(self):
         response = self.client.get("/recipes")
         assert response.status_code == 200
-        #assert response.json() == ResponseGet.RecipesExist.value
 
     def test_getRecipesNotExist(self):
         run_update(RecipesTests.DeleteRecipes.value)

@@ -5,7 +5,7 @@ import logging
 from fastapi import FastAPI, status, Response
 
 from src.users import getUsers
-from src.templates.Templates_GET import UserOut, UserOut, UserIn
+from src.templates.Templates_GET import UserOut, UserIn
 from src.templates.Templates_POST import AddUser, AddRecipes
 from src.users import addUser
 from src.recipes import Recipes
@@ -27,7 +27,7 @@ async def root():
 @app.get("/recipes")
 async def get_recipes(response: Response):
     grec = rec.get_recipes()
-    if len(grec) > 0:
+    if grec:
         return grec
     else:
         response.status_code = status.HTTP_404_NOT_FOUND

@@ -12,5 +12,5 @@ class AddRecipes(BaseModel):
     name: str
     user_id: int
     recipes_type: int
-    descriptions: Optional[str] = None
     is_public: bool
+    des: Optional[str] = None

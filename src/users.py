@@ -13,7 +13,6 @@ def addUser(item):
 
 
 def getUsers(username):
-    # [(16, 'TU_0', 'TuPass_0', 'TU0@test.com')]
     results = run_query(qtUsers.getUsers.value % username)
     if len(results) > 0:
         log.debug(f"Results: {results}")
