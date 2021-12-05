@@ -1,0 +1,6 @@
+#SHORTCUTS
+recipes type -> rt
+main ingredients  -> ming
+detailed recipe -> d_recipe
+
+

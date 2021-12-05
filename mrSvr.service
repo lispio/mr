@@ -1,0 +1,10 @@
+[Unit]
+Description=mrSvr
+After=network.target
+
+[Service]
+Type=idle
+WorkingDirectory=/opt/lispio/mr/
+ExecStart=/opt/lispio/mr/mrSvr.py
+[Install]
+WantedBy=multi-user.target
