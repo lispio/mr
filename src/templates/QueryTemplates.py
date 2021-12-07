@@ -9,9 +9,12 @@ class qtUsers(Enum):
 class qtRecipes(Enum):
     addRecipes = "INSERT INTO recipes(name, user_id, recipes_type, is_public, des) VALUES ('%s', %s, %s, '%s', '%s')"
 
-    getRecipes = "select recipes.name, users.name, recipes_type.rt  from recipes JOIN users ON recipes.user_id = " \
-                 "users.id JOIN recipes_type ON recipes.recipes_type = recipes_type.rt_id WHERE recipes.is_public = " \
-                 "True;"
+    getRecipes = "SELECT recipes.id, recipes.name, users.name, recipes_type.rt  FROM recipes " \
+                 "JOIN users ON recipes.user_id = users.id " \
+                 "JOIN recipes_type ON recipes.recipes_type = recipes_type.rt_id " \
+                 "WHERE recipes.is_public = True;"
 
-    getUserRecipes = "select recipes.name, recipes.recipes_type, recipes.is_public, recipes.des from recipes JOIN " \
-                     "users ON recipes.user_id = users.id WHERE users.name = '%s' "
+    getUserRecipes = "SELECT recipes.id, recipes.name, users.name, recipes_type.rt  FROM recipes " \
+                     "JOIN users ON recipes.user_id = users.id " \
+                     "JOIN recipes_type ON recipes.recipes_type = recipes_type.rt_id " \
+                     "WHERE recipes.is_public = True AND users.name = '%s';"
