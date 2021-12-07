@@ -9,7 +9,8 @@ log = logging.getLogger('mrSvr')
 
 def addUser(item):
     run_update(qtUsers.addUsers.value % (item.name, item.password, item.email))
-    return "user added!"
+
+    return {"name": item.name, "status": "added"}
 
 
 def getUsers(username):
