@@ -2,9 +2,6 @@
 import logging
 from src.db import run_query, run_update
 from src.templates.QueryTemplates import qtRecipes
-from fastapi import FastAPI, status, Response
-
-from src.templates.Templates_POST import AddUser, RecipesIn, RecipesOut
 
 log = logging.getLogger('mrSvr')
 

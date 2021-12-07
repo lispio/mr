@@ -1,15 +1,12 @@
 #!/opt/lispio/mr/mrSvr_venv/bin/python
 # -*- coding: utf-8 -*-
-import json
 import logging
-from typing import Optional
 
 from fastapi import FastAPI, status, Response
 
 from src.users import getUsers
-from src.templates.Templates_GET import UserOut, UserIn
-from src.templates.Templates_POST import AddUser, RecipesIn, RecipesOut
-from src.users import addUser
+from src.templates.Templates_GET import UserOut
+from src.templates.Templates_POST import RecipesIn, RecipesOut
 from src.recipes import Recipes
 
 log = logging.getLogger('mrSvr')
@@ -80,3 +77,4 @@ async def delete_user(response: Response):
 @app.delete("/delete_recipe")
 async def delete_recipe(response: Response):
     response.status_code = status.HTTP_501_NOT_IMPLEMENTED
+

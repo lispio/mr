@@ -1,8 +1,5 @@
-import json
-from enum import Enum
-from fastapi import FastAPI
 from typing import Optional
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 
 
 class UserOut(BaseModel):
@@ -14,6 +11,4 @@ class UserOut(BaseModel):
 
 class UserIn(BaseModel):
     username: str
-
-
 

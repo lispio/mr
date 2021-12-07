@@ -1,3 +1,4 @@
+# all db request
 from enum import Enum
 
 
@@ -18,3 +19,4 @@ class qtRecipes(Enum):
                      "JOIN users ON recipes.user_id = users.id " \
                      "JOIN recipes_type ON recipes.recipes_type = recipes_type.rt_id " \
                      "WHERE recipes.is_public = True AND users.name = '%s';"
+
