@@ -5,7 +5,7 @@ from src.db import run_query, run_update
 from src.users import getUsers, addUser
 
 from uTests.TestTemplates import TUQuery as ct
-from src.templates.Templates_POST import AddUser
+from src.templates.Templates_POST import AddUserIn
 from uTests.TestTemplates import TUQuery, RecipesTests, TUser
 
 

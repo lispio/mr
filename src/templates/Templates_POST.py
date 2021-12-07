@@ -2,10 +2,15 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-class AddUser(BaseModel):
+class AddUserIn(BaseModel):
     name: str
     password: str
     email: str
+
+
+class AddUserOut(BaseModel):
+    name: str
+    status: str
 
 
 class RecipesIn(BaseModel):
