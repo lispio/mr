@@ -4,10 +4,12 @@ import logging
 
 from fastapi import FastAPI, status, Response
 
-from src.users import getUsers
-from src.templates.Templates_GET import UserOut
-from src.templates.Templates_POST import RecipesIn, RecipesOut
+from src.users import getUsers, addUser
 from src.recipes import Recipes
+
+from src.templates.Templates_GET import UserOut
+from src.templates.Templates_POST import RecipesIn, RecipesOut, AddUserIn, AddUserOut
+
 
 log = logging.getLogger('mrSvr')
 
@@ -53,9 +55,9 @@ async def find_recipes(response: Response):
     response.status_code = status.HTTP_501_NOT_IMPLEMENTED
 
 
-@app.post("/add_user")
-async def add_users(response: Response):
-    response.status_code = status.HTTP_501_NOT_IMPLEMENTED
+@app.post("/add_user/", response_model=AddUserOut, response_model_exclude_unset=True, status_code=200)
+async def add_users(adduser: AddUserIn, response: Response):
+    return addUser(adduser)
 
 
 @app.post("/add_recipes", response_model=RecipesOut, response_model_exclude_unset=True, status_code=200)
