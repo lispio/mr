@@ -20,3 +20,7 @@ class qtRecipes(Enum):
                      "JOIN recipes_type ON recipes.recipes_type = recipes_type.rt_id " \
                      "WHERE recipes.is_public = True AND users.name = '%s';"
 
+
+class qtDelete(Enum):
+    deleteUser = "DELETE FROM users WHERE name='%s'"
+    deleteRecipes = "DELETE FROM recipes WHERE name='%s'"

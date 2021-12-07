@@ -2,7 +2,7 @@
 import logging
 
 from src.db import run_query, run_update
-from src.templates.QueryTemplates import qtUsers
+from src.templates.QueryTemplates import qtUsers, qtDelete
 
 log = logging.getLogger('mrSvr')
 
@@ -22,3 +22,9 @@ def getUsers(username):
         }
 
         return items
+
+
+def deleteUser(username):
+    run_update(qtDelete.deleteUser.value % username)
+    return {"name": username, "status": 'DELETE'}
+
