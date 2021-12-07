@@ -8,7 +8,6 @@ class AddUser(BaseModel):
     email: str
 
 
-
 class RecipesIn(BaseModel):
     name: str
     user_id: int
