@@ -35,6 +35,15 @@ class TestGET(TestCase):
         response = self.client.get("/recipes")
         assert response.status_code == 200
 
+    def test_getRecipesUserExist(self):
+        response = self.client.get("recipes_user?username=1")
+        assert response.status_code == 200
+
+    def test_getRecipesUserNotExist(self):
+        response = self.client.get("recipes_user?username=10")
+        assert response.status_code == 404
+        assert response.json() is None
+
     def test_getRecipesNotExist(self):
         run_update(RecipesTests.DeleteRecipes.value)
         response = self.client.get("/recipes")
