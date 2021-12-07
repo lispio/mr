@@ -3,7 +3,7 @@
 #Script for create venv and install needed package 
 
 create_db() {
-  #create data base 'vis' if not exist
+  #create data base 'mr' if not exist
   psql -U postgres -tc "SELECT 1 FROM pg_database WHERE datname = 'mr'" | grep -q 1 || psql -U postgres -c "CREATE DATABASE mr OWNER it"
 }
 
