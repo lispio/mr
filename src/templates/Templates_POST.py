@@ -24,4 +24,3 @@ class RecipesIn(BaseModel):
 class RecipesOut(BaseModel):
     name: str
     status: str
-
