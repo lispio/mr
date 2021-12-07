@@ -1,3 +1,4 @@
+# all db request
 from enum import Enum
 
 
@@ -7,7 +8,6 @@ class qtUsers(Enum):
 
 
 class qtRecipes(Enum):
-
     addRecipes = "INSERT INTO recipes(name, user_id, recipes_type, is_public, des) VALUES ('%s', %s, %s, '%s', '%s')"
 
     getRecipes = "SELECT recipes.id, recipes.name, users.name, recipes_type.rt  FROM recipes " \

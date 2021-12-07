@@ -1,18 +1,12 @@
 # -*- coding: utf-8 -*-
 import logging
-
 from src.db import run_query, run_update
 from src.templates.QueryTemplates import qtRecipes
-from fastapi import FastAPI, status, Response
-
-from src.templates.Templates_POST import AddUser, RecipesIn, RecipesOut
-
 
 log = logging.getLogger('mrSvr')
 
 
 class Recipes:
-
 
     def prepare_response(self, items):
         response = {}
@@ -37,10 +31,6 @@ class Recipes:
                     recipes.des))
 
         return {"name": f"{recipes.name}", "status": "added"}
-
-    def get_recipes(self):
-        return run_query(qtRecipes.GetRecipes.value)
-
 
     def find_recipes(self):
         pass
