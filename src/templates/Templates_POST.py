@@ -8,6 +8,7 @@ class AddUser(BaseModel):
     email: str
 
 
+
 class RecipesIn(BaseModel):
     name: str
     user_id: int
@@ -19,3 +20,4 @@ class RecipesIn(BaseModel):
 class RecipesOut(BaseModel):
     name: str
     status: str
+

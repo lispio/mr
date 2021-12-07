@@ -2,17 +2,29 @@
 # -*- coding: utf-8 -*-
 import json
 import logging
+
 from typing import Optional
 
 from fastapi import FastAPI, status, Response
 
 from src.users import getUsers
 from src.templates.Templates_GET import UserOut, UserIn
+
 from src.templates.Templates_POST import AddUser, RecipesIn, RecipesOut
 from src.users import addUser
 from src.recipes import Recipes
 
 log = logging.getLogger('mrSvr')
+
+
+from src.templates.Templates_POST import AddUser, AddRecipes
+from src.users import addUser
+from src.recipes import Recipes
+
+
+log = logging.getLogger('mrSvr')
+
+
 
 app = FastAPI()
 
@@ -24,6 +36,7 @@ async def root():
     return {"message": "Hello World im Mannis's Recipes"}
 
 
+
 @app.get("/recipes")
 async def get_recipes(response: Response):
     grec = rec.get_recipes()
@@ -33,6 +46,7 @@ async def get_recipes(response: Response):
         response.status_code = status.HTTP_404_NOT_FOUND
 
 
+
 @app.get("/recipes_user")
 async def get_recipes(username: str, response: Response):
     grec = rec.get_recipes(username)
@@ -40,6 +54,7 @@ async def get_recipes(username: str, response: Response):
         return grec
     else:
         response.status_code = status.HTTP_404_NOT_FOUND
+
 
 
 @app.get("/get_users/", response_model=UserOut, response_model_exclude_unset=True, status_code=200)
@@ -59,6 +74,7 @@ async def find_recipes(response: Response):
 @app.post("/add_user")
 async def add_users(response: Response):
     response.status_code = status.HTTP_501_NOT_IMPLEMENTED
+
 
 
 @app.post("/add_recipes", response_model=RecipesOut, response_model_exclude_unset=True, status_code=200)

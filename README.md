@@ -24,6 +24,7 @@
 
 
 ## General Information
+
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
@@ -56,6 +57,7 @@ Examples:
 ## Project Status
 ### Very early stage of development  
 Project is: _in progress_
+
 
 ## screenshots
 
