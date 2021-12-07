@@ -24,7 +24,7 @@
 
 
 ## General Information
-mrUtility is a tool for "Manny's recipes (mr)"
+
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
@@ -57,7 +57,6 @@ Examples:
 ## Project Status
 ### Very early stage of development  
 Project is: _in progress_
-
 
 
 ## screenshots
