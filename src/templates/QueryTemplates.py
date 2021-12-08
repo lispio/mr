@@ -8,7 +8,11 @@ class qtUsers(Enum):
 
 
 class qtRecipes(Enum):
-    addRecipes = "INSERT INTO recipes(name, user_id, recipes_type, is_public, des) VALUES ('%s', %s, %s, '%s', '%s')"
+    addRecipes = "INSERT INTO recipes(name, user_id, recipes_type, is_public, des) " \
+                 "VALUES ('%s', %s, %s, '%s', '%s') " \
+                 "RETURNING id "
+
+    addRecipesSteps = "INSERT INTO steps(recipes_id, s_number, s_desc) VALUES "
 
     getRecipes = "SELECT recipes.id, recipes.name, users.name, recipes_type.rt  FROM recipes " \
                  "JOIN users ON recipes.user_id = users.id " \
