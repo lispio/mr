@@ -4,11 +4,12 @@ import logging
 
 from fastapi import FastAPI, status, Response
 
-from src.users import getUsers, addUser
+from src.users import getUsers, addUser, deleteUser
 from src.recipes import Recipes
 
-from src.templates.Templates_GET import UserOut
-from src.templates.Templates_POST import RecipesIn, RecipesOut, AddUserIn, AddUserOut
+from src.templates.Delete_Templates import DeleteUserIn, DeleteUserOut
+from src.templates.GET_templates import UserOut
+from src.templates.POST_templates import RecipesIn, RecipesOut, AddUserIn, AddUserOut
 
 
 log = logging.getLogger('mrSvr')
@@ -71,12 +72,14 @@ async def update_recipes(response: Response):
     response.status_code = status.HTTP_501_NOT_IMPLEMENTED
 
 
-@app.delete("/delete_user")
-async def delete_user(response: Response):
-    response.status_code = status.HTTP_501_NOT_IMPLEMENTED
+@app.delete("/delete_user/", response_model=DeleteUserOut, response_model_exclude_unset=True, status_code=200)
+async def delete_user(userDelete: str, response: Response):
+    deleteUser(userDelete)
+    response.status_code = status.HTTP_200_OK
 
 
 @app.delete("/delete_recipe")
-async def delete_recipe(response: Response):
-    response.status_code = status.HTTP_501_NOT_IMPLEMENTED
+async def delete_recipe(recipesDelete: str, response: Response):
+    return rec.remove_recipes(recipesDelete)
+
 
