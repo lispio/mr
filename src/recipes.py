@@ -21,14 +21,22 @@ class Recipes:
 
         return self.prepare_response(run_query(qtRecipes.getRecipes.value))
 
+    def add_steps(self, recId, recSteps):
+        tmp = ''
+        for x in recSteps.steps:
+            tmp += f" ({recId}, {x.s_number}, '{x.s_desc}'),"
+        run_update(qtRecipes.addRecipesSteps.value + tmp[0:-1] + ';')
+
     def add_recipes(self, recipes):
         log.debug(recipes)
-        run_update(qtRecipes.addRecipes.value %
-                   (recipes.name,
-                    recipes.user_id,
-                    recipes.recipes_type,
-                    recipes.is_public,
-                    recipes.des))
+        recId = run_query(qtRecipes.addRecipes.value % (recipes.name,
+                                                        recipes.user_id,
+                                                        recipes.recipes_type,
+                                                        recipes.is_public,
+                                                        recipes.des))
+
+        if recipes.steps:
+            self.add_steps(recId, recipes.steps)
 
         return {"name": f"{recipes.name}", "status": "added"}
 
@@ -38,6 +46,6 @@ class Recipes:
     def update_recipes(self):
         pass
 
-    def remove_recipes(self, recipesname):
-        run_update(qtDelete.deleteRecipes.value % recipesname)
-        return {"name": recipesname, "status": 'DELETE'}
+    def remove_recipes(self, recipesName):
+        run_update(qtDelete.deleteRecipes.value % recipesName)
+        return {"name": recipesName, "status": 'DELETE'}

@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Set, List
 from pydantic import BaseModel
 
 
@@ -13,14 +13,25 @@ class AddUserOut(BaseModel):
     status: str
 
 
+class StepsIn(BaseModel):
+    s_number: int = None
+    s_desc: str = None
+
+
 class RecipesIn(BaseModel):
     name: str
     user_id: int
     recipes_type: int
     is_public: bool = False
     des: Optional[str] = None
+    steps: List[StepsIn] = None
 
 
 class RecipesOut(BaseModel):
     name: str
     status: str
+
+
+class RecipesStepsIn(BaseModel):
+    pass
+    #steps: Optional[list] = StepsIn
