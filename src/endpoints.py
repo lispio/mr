@@ -73,7 +73,7 @@ async def update_recipes(response: Response):
 
 
 @app.delete("/delete_user/", response_model=DeleteUserOut, response_model_exclude_unset=True, status_code=200)
-async def delete_user(userDelete: str, response: Response):
+async def delete_user(userDelete: str):
     return deleteUser(userDelete)
 
 
