@@ -32,6 +32,7 @@ class RecipesOut(BaseModel):
     status: str
 
 
-class RecipesStepsIn(BaseModel):
-    pass
-    #steps: Optional[list] = StepsIn
+class StepsUpdate(BaseModel):
+    recipes_id: int
+    step_id: int
+
