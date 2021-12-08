@@ -43,8 +43,8 @@ class Recipes:
     def find_recipes(self):
         pass
 
-    def update_recipes(self):
-        pass
+    def update_recipes(self, stepUpdate):
+        print(stepUpdate)
 
     def remove_recipes(self, recipesName):
         run_update(qtDelete.deleteRecipes.value % recipesName)

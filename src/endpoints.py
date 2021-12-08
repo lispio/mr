@@ -9,7 +9,7 @@ from src.recipes import Recipes
 
 from src.templates.Delete_Templates import DeleteUserOut
 from src.templates.GET_templates import UserOut
-from src.templates.POST_templates import RecipesIn, RecipesOut, AddUserIn, AddUserOut, RecipesStepsIn, StepsIn
+from src.templates.POST_templates import RecipesIn, RecipesOut, AddUserIn, AddUserOut, StepsUpdate, StepsIn
 
 
 log = logging.getLogger('mrSvr')
@@ -68,9 +68,8 @@ async def add_recipes(recipes: RecipesIn, response: Response):
 
 
 @app.post("/add_steps", response_model_exclude_unset=True, status_code=200)
-async def update_steps(step: RecipesStepsIn):
-    print(step)
-    #rec.add_steps(steps)
+async def update_steps(stepUpdate: StepsUpdate):
+    rec.update_recipes(stepUpdate)
 
 
 @app.post("/update_recipes")
