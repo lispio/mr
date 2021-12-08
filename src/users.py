@@ -22,3 +22,8 @@ def getUsers(username):
         }
 
         return items
+
+      
+def deleteUser(username):
+    run_update(qtDelete.deleteUser.value % username)
+    return {"username": username, "status": 'DELETE'}
