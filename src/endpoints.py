@@ -4,11 +4,12 @@ import logging
 
 from fastapi import FastAPI, status, Response
 
-from src.users import getUsers, addUser
+from src.users import getUsers, addUser, deleteUser
 from src.recipes import Recipes
 
-from src.templates.Templates_GET import UserOut
-from src.templates.Templates_POST import RecipesIn, RecipesOut, AddUserIn, AddUserOut
+from src.templates.Delete_Templates import DeleteUserOut
+from src.templates.GET_templates import UserOut
+from src.templates.POST_templates import RecipesIn, RecipesOut, AddUserIn, AddUserOut
 
 
 log = logging.getLogger('mrSvr')
