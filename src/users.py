@@ -2,7 +2,7 @@
 import logging
 
 from src.db import run_query, run_update
-from src.templates.QueryTemplates import qtUsers
+from src.templates.QueryTemplates import qtUsers, qtDelete
 
 log = logging.getLogger('mrSvr')
 
