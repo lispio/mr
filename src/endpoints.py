@@ -80,6 +80,6 @@ async def delete_user(userDelete: str, response: Response):
 
 @app.delete("/delete_recipe")
 async def delete_recipe(recipesDelete: str, response: Response):
-    rec.remove_recipes(recipesDelete)
+    return rec.remove_recipes(recipesDelete)
 
 
