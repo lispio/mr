@@ -78,6 +78,7 @@ async def delete_user(userDelete: str, response: Response):
 
 
 @app.delete("/delete_recipe")
-async def delete_recipe(response: Response):
-    response.status_code = status.HTTP_501_NOT_IMPLEMENTED
+async def delete_recipe(recepiesname: str):
+    return rec.remove_recipes(recepiesname)
+
 
