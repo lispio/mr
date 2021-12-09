@@ -14,6 +14,8 @@ class qtRecipes(Enum):
 
     addRecipesSteps = "INSERT INTO steps(recipes_id, s_number, s_desc) VALUES "
 
+    addRecipesMing = "INSERT INTO recipes_d (recipes_id, ming_id, weight) VALUES "
+
     getRecipes = "SELECT recipes.id, recipes.name, users.name, recipes_type.rt  FROM recipes " \
                  "JOIN users ON recipes.user_id = users.id " \
                  "JOIN recipes_type ON recipes.recipes_type = recipes_type.rt_id " \
@@ -25,6 +27,11 @@ class qtRecipes(Enum):
                      "WHERE recipes.is_public = True AND users.name = '%s';"
 
     getRecipesSteps = "select s_number, s_desc from steps WHERE id = (SELECT id FROM recipes WHERE name='%s')"
+
+    getRecipesMing = "SELECT recipes.name, ming.name, recipes_d.weight FROM recipes_d " \
+                     "JOIN ming ON recipes_d.ming_id=ming.id " \
+                     "JOIN recipes ON recipes_d.recipes_id=recipes.id WHERE " \
+                     "recipes.name='%s';"
 
     updateSteps = "UPDATE steps SET s_desc='%s' WHERE recipes_id=%s AND s_number=%s"
 

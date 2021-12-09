@@ -18,6 +18,11 @@ class StepsIn(BaseModel):
     s_desc: str = None
 
 
+class MingIN(BaseModel):
+    ming_id: int
+    weight: int
+
+
 class RecipesIn(BaseModel):
     name: str
     user_id: int
@@ -25,6 +30,7 @@ class RecipesIn(BaseModel):
     is_public: bool = False
     des: Optional[str] = None
     steps: List[StepsIn] = None
+    ming: List[MingIN] = None
 
 
 class RecipesOut(BaseModel):

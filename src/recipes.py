@@ -27,6 +27,13 @@ class Recipes:
             tmp += f" ({recId[0][0]}, {x.s_num}, '{x.s_desc}'),"
         run_update(qtRecipes.addRecipesSteps.value + tmp[0:-1] + ';')
 
+    def add_ming(self, recId, ming):
+        tmp = ''
+        for m in ming:
+            tmp += f" ({recId[0][0]}, {m.ming_id}, {m.weight}),"
+
+        run_update(qtRecipes.addRecipesMing.value + tmp[0:-1] + ';')
+
     def add_recipes(self, recipes):
         log.debug(recipes)
         recId = run_query(qtRecipes.addRecipes.value % (recipes.name,
@@ -38,10 +45,16 @@ class Recipes:
         if recipes.steps:
             self.add_steps(recId, recipes.steps)
 
+        if recipes.ming:
+            self.add_ming(recId, recipes.ming)
+
         return {"name": f"{recipes.name}", "status": "added"}
 
     def get_steps(self, recipesName):
         return run_query(qtRecipes.getRecipesSteps.value % recipesName)
+
+    def get_ming(self, recipesName):
+        return run_query(qtRecipes.getRecipesMing.value % recipesName)
 
     def find_recipes(self):
         pass
