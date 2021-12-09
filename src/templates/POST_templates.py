@@ -14,7 +14,7 @@ class AddUserOut(BaseModel):
 
 
 class StepsIn(BaseModel):
-    s_number: int = None
+    s_num: int = None
     s_desc: str = None
 
 

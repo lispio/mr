@@ -24,6 +24,10 @@ class qtRecipes(Enum):
                      "JOIN recipes_type ON recipes.recipes_type = recipes_type.rt_id " \
                      "WHERE recipes.is_public = True AND users.name = '%s';"
 
+    getRecipesSteps = "select s_number, s_desc from steps WHERE id = (SELECT id FROM recipes WHERE name='%s')"
+
+    updateSteps = "UPDATE steps SET s_desc='%s' WHERE recipes_id=%s AND s_number=%s"
+
 
 class qtDelete(Enum):
     deleteUser = "DELETE FROM users WHERE name='%s'"
