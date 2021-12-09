@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from fastapi import FastAPI, status, Response, Query, Body
+from fastapi import FastAPI, status, Response
 
 from src.users import getUsers, addUser, deleteUser
 from src.recipes import Recipes
 
 from src.templates.Delete_Templates import DeleteUserOut
 from src.templates.GET_templates import UserOut
-from src.templates.POST_templates import RecipesIn, RecipesOut, AddUserIn, AddUserOut, StepsUpdate, StepsIn
+from src.templates.POST_templates import RecipesIn, RecipesOut, AddUserIn, AddUserOut, StepsUpdate
 
 
 log = logging.getLogger('mrSvr')
@@ -47,6 +47,15 @@ async def get_recipesSteps(recipesName: str, response: Response):
     steps = rec.get_steps(recipesName)
     if steps:
         return steps
+    else:
+        response.status_code = status.HTTP_404_NOT_FOUND
+
+
+@app.get("/recipes_ming")
+async def  get_recipesMing(recipesName: str, response: Response):
+    ming = rec.get_ming(recipesName)
+    if ming:
+        return ming
     else:
         response.status_code = status.HTTP_404_NOT_FOUND
 
