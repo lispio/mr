@@ -40,6 +40,9 @@ class Recipes:
 
         return {"name": f"{recipes.name}", "status": "added"}
 
+    def get_steps(self, recipesName):
+        return run_query(qtRecipes.getRecipesSteps.value % recipesName)
+
     def find_recipes(self):
         pass
 

@@ -42,6 +42,15 @@ async def get_recipes(username: str, response: Response):
         response.status_code = status.HTTP_404_NOT_FOUND
 
 
+@app.get("/recipes_steps")
+async def get_recipesSteps(recipesName: str, response: Response):
+    steps = rec.get_steps(recipesName)
+    if steps:
+        return steps
+    else:
+        response.status_code = status.HTTP_404_NOT_FOUND
+
+
 @app.get("/get_users/", response_model=UserOut, response_model_exclude_unset=True, status_code=200)
 async def get_user_id(username: str, response: Response):
     guser = getUsers(username)
