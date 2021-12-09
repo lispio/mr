@@ -23,8 +23,8 @@ class Recipes:
 
     def add_steps(self, recId, recSteps):
         tmp = ''
-        for x in recSteps.steps:
-            tmp += f" ({recId}, {x.s_number}, '{x.s_desc}'),"
+        for x in recSteps:
+            tmp += f" ({recId[0][0]}, {x.s_num}, '{x.s_desc}'),"
         run_update(qtRecipes.addRecipesSteps.value + tmp[0:-1] + ';')
 
     def add_recipes(self, recipes):
@@ -43,7 +43,7 @@ class Recipes:
     def find_recipes(self):
         pass
 
-    def update_recipes(self, stepUpdate):
+    def update_steps(self, stepUpdate):
         print(stepUpdate)
 
     def remove_recipes(self, recipesName):

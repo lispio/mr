@@ -67,9 +67,9 @@ async def add_recipes(recipes: RecipesIn, response: Response):
     return results
 
 
-@app.post("/add_steps", response_model_exclude_unset=True, status_code=200)
+@app.post("/update_steps", response_model_exclude_unset=True, status_code=200)
 async def update_steps(stepUpdate: StepsUpdate):
-    rec.update_recipes(stepUpdate)
+    rec.update_steps(stepUpdate)
 
 
 @app.post("/update_recipes")
@@ -83,7 +83,7 @@ async def delete_user(userDelete: str, response: Response):
 
 
 @app.delete("/delete_recipe")
-async def delete_recipe(recepiesname: str):
-    return rec.remove_recipes(recepiesname)
+async def delete_recipe(recipesName: str):
+    return rec.remove_recipes(recipesName)
 
 
