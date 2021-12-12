@@ -15,6 +15,13 @@ class Recipes:
 
         return response
 
+    def steps_response(self, steps_data):
+        step_response = {}
+        for s in steps_data:
+            step_response[s[0]] = {'step': s[0], 's_desc': s[1]}
+
+        return step_response
+
     def get_recipes(self, username=None):
         if username:
             return self.prepare_response(run_query(qtRecipes.getUserRecipes.value % username))
@@ -51,7 +58,7 @@ class Recipes:
         return {"name": f"{recipes.name}", "status": "added"}
 
     def get_steps(self, recipesName):
-        return run_query(qtRecipes.getRecipesSteps.value % recipesName)
+        return self.steps_response(run_query(qtRecipes.getRecipesSteps.value % recipesName))
 
     def get_ming(self, recipesName):
         return run_query(qtRecipes.getRecipesMing.value % recipesName)

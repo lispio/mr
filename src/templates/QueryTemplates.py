@@ -26,7 +26,7 @@ class qtRecipes(Enum):
                      "JOIN recipes_type ON recipes.recipes_type = recipes_type.rt_id " \
                      "WHERE recipes.is_public = True AND users.name = '%s';"
 
-    getRecipesSteps = "select s_number, s_desc from steps WHERE id = (SELECT id FROM recipes WHERE name='%s')"
+    getRecipesSteps = "SELECT s_number, s_desc FROM steps WHERE recipes_id = (SELECT id FROM recipes WHERE name='%s')"
 
     getRecipesMing = "SELECT recipes.name, ming.name, recipes_d.weight FROM recipes_d " \
                      "JOIN ming ON recipes_d.ming_id=ming.id " \
