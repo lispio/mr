@@ -28,6 +28,9 @@ class Recipes:
 
         return self.prepare_response(run_query(qtRecipes.getRecipes.value))
 
+    def get_recipes_my(self, username):
+        return self.prepare_response(run_query(qtRecipes.getMyRecipes.value % username))
+
     def add_steps(self, recId, recSteps):
         tmp = ''
         for x in recSteps:

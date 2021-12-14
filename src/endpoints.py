@@ -33,8 +33,17 @@ async def get_recipes(response: Response):
         response.status_code = status.HTTP_404_NOT_FOUND
 
 
+@app.get("/my_recipes")
+async def get_recipes_my(username: str, response: Response):
+    gMyRec = rec.get_recipes_my(username)
+    if gMyRec:
+        return gMyRec
+    else:
+        response.status_code = status.HTTP_404_NOT_FOUND
+
+
 @app.get("/recipes_user")
-async def get_recipes(username: str, response: Response):
+async def get_recipes_user(username: str, response: Response):
     grec = rec.get_recipes(username)
     if grec:
         return grec
