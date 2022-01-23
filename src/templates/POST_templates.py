@@ -4,8 +4,6 @@ from pydantic import BaseModel
 
 class AddUserIn(BaseModel):
     name: str
-    password: str
-    email: str
 
 
 class AddUserOut(BaseModel):

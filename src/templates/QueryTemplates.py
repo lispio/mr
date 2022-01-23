@@ -3,7 +3,7 @@ from enum import Enum
 
 
 class qtUsers(Enum):
-    addUsers = "INSERT INTO users (name, password, email) VALUES ('%s', '%s', '%s')"
+    addUsers = "INSERT INTO users (name) VALUES ('%s')"
     getUsers = "SELECT * FROM users WHERE name LIKE '%s'"
 
 

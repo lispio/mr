@@ -61,7 +61,7 @@ async def get_recipesSteps(recipesName: str, response: Response):
 
 
 @app.get("/recipes_ming")
-async def  get_recipesMing(recipesName: str, response: Response):
+async def get_recipesMing(recipesName: str, response: Response):
     ming = rec.get_ming(recipesName)
     if ming:
         return ming
