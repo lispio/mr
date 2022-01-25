@@ -44,3 +44,13 @@ class qtRecipes(Enum):
 class qtDelete(Enum):
     deleteUser = "DELETE FROM users WHERE name='%s'"
     deleteRecipes = "DELETE FROM recipes WHERE name='%s'"
+
+
+class qtUserGroups(Enum):
+    addGroups = "INSERT INTO groups (user_id, name, members) VALUES (%s, '%s')"
+    addMember = "UPDATE groups SET members = members || '%s' WHERE name = '%s'"
+    getGroups = "SELECT name FROM groups WHERE user_id = %s"
+    getMembers = "SELECT members FROM group WHERE name = '%s'"
+    deleteMember = "UPDATE groups SET members = array_remove(members,'%s') WHERE name = '%s'"
+    deleteGroup = "DELETE FROM groups WHERE name='%s' AND user_id = %s;"
+

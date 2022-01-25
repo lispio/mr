@@ -12,3 +12,6 @@ class UserOut(BaseModel):
 class UserIn(BaseModel):
     username: str
 
+
+class GroupsOut(BaseModel):
+    groupsName: str
