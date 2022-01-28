@@ -5,8 +5,8 @@ import logging
 from fastapi import FastAPI, status, Response
 
 from src.users import getUsers, addUser, deleteUser
-from src.userGroup import getGroups
 from src.recipes import Recipes
+from src.ingredients import getIngredients, addIngredients
 
 from src.templates.Delete_Templates import DeleteUserOut
 from src.templates.GET_templates import UserOut, GroupsOut
@@ -84,14 +84,18 @@ async def find_recipes(response: Response):
     response.status_code = status.HTTP_501_NOT_IMPLEMENTED
 
 
-@app.get("/get_groups/", response_model_exclude_unset=True, status_code=200)
-async def get_groups(user_id: int, response: Response):
-    groups = getGroups(user_id)
-    log.debug(groups)
-    if groups:
-        return [groups]
+@app.get("/get_ingredients")
+async def get_ingredients(response: Response):
+    ing = getIngredients()
+    if ing:
+        return ing
     else:
         response.status_code = status.HTTP_404_NOT_FOUND
+
+
+@app.post("/add_ingredients")
+async def add_ingredients(response: Response):
+    response.status_code = status.HTTP_501_NOT_IMPLEMENTED
 
 
 @app.post("/add_user/", response_model=AddUserOut, response_model_exclude_unset=True, status_code=200)

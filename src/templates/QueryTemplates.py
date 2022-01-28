@@ -54,3 +54,7 @@ class qtUserGroups(Enum):
     deleteMember = "UPDATE groups SET members = array_remove(members,'%s') WHERE name = '%s'"
     deleteGroup = "DELETE FROM groups WHERE name='%s' AND user_id = %s;"
 
+
+class qtIngredients(Enum):
+    getIngredients = "SELECT id, name from ming;"
+    addIngredients = "INSERT INTO ming(name) VALUES (%s); "
